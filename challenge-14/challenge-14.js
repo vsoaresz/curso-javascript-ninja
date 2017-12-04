@@ -1,7 +1,7 @@
 /*
 Envolva todo o código desse desafio em uma IIFE.
 */
-
+(function(){
 /*
 Crie um array chamado numberObjects. Esse array deve ter 10 elementos. Cada
 elemento será um objeto no formato:
@@ -10,23 +10,40 @@ Os números devem ser de 1 a 10.
 Mostre esse array no console.
 */
 console.log( 'Number Objects Array:' );
-// ?
+var numberObjects = [
+    {number : 1},
+    {number : 2},
+    {number : 3},
+    {number : 4},
+    {number : 5},
+    {number : 6},
+    {number : 7},
+    {number : 8},
+    {number : 9},
+    {number : 10},
+]
+console.log(numberObjects);
 
 /*
 Crie um array chamado `justNumbers`, que terá como elementos somente os
 números do array criado acima. Mostre esse novo array no console.
 */
 console.log( '\nJust Numbers:' );
-// ?
-
+var justNumbers = [1,2,3,4,5,6,7,8,9,10];
+console.log(justNumbers);
 /*
 Crie um novo array chamado `justMod2Or3`, que receberá do array criado acima
 somente os números que forem divisíveis por 2 ou 3. Mostre esse novo array
 no console.
 */
 console.log( '\nJust module of division by 2 or 3:' );
-// ?
+var justMod2Or3 = justNumbers.filter(function(val,index){
+    if(val % 2 === 0 || val % 3 === 0){
+        return val;
+    }
+});
 
+console.log(justMod2Or3);
 /*
 Declare uma variável chamada operation que receba, do array criado acima,
 um valor reduzido pela seguinte operação:
@@ -36,7 +53,11 @@ O cálculo deve começar com zero.
 Mostre o resultado no console.
 */
 console.log( '\nOperation:' );
-// ?
+var operation = justMod2Or3.reduce(function(prev,curr){
+   return (prev + 1) * curr;
+
+},0);
+console.log(operation);
 
 /*
 Faça o mesmo cálculo passado acima, mas começando do último item para o
@@ -44,7 +65,11 @@ primeiro. O nome da variável deve ser operation2. Mostre o resultado no
 console.
 */
 console.log( '\nOperation 2:' );
-// ?
+var operation2 = justMod2Or3.reduceRight(function(prev,curr){
+    return (prev + 1) * curr;
+ 
+ },0);
+ console.log(operation2);
 
 /*
 Crie um array chamado `name`. Cada elemento desse array deve ser uma sílaba
@@ -55,20 +80,35 @@ infantil, onde você coloca a letra "P" antes de cada sílaba de uma palavra
 falada, como se você estivesse falando em código xD
 */
 console.log( '\nSeu nome na língua do "P":' );
-// ?
+var name = ['V','I','T','O','R'];
+
+var nome = name.reduce(function(acumulado,atual,indice){
+
+        return acumulado += 'P' + atual;
+ 
+},'');
+console.log(nome);
 
 /*
 Crie uma variável chamada `inversedName`, que reduzirá o array em uma string
 e atribuirá o seu nome invertido (usando o array criado acima).
 */
 console.log( '\nInversed Name:' );
-// ?
+var name = ['V','I','T','O','R'];
+
+var nome = name.reduceRight(function(acumulado,atual,indice){
+
+    return acumulado += 'P' + atual;
+ 
+},'');
+console.log(nome);
+
 
 /*
 Mostre no console o array `numberObjects`.
 */
 console.log( '\nNumber objects' );
-// ?
+console.log(numberObjects)
 
 /*
 Verifique se existem em algum índice de numberObjects um objeto ìgual a
@@ -80,7 +120,9 @@ Consegue prever o resultado? Deixe uma mensagem no console tentando explicar
 o que acontece ;)
 */
 console.log( '\nExiste um { number: 2 } em numberObjects?' );
-// ?
+var e = numberObjects.indexOf({number : 2},0);
+console.log(e);
+
 
 /*
 Fazendo o mesmo do exercício acima, mas começando a buscar do último índice,
@@ -94,4 +136,6 @@ Verifique se `justMod2Or3` é um array. Se for, mostre-o no console, no
 formato de String.
 */
 console.log( '\njustMod2Or3 é um array? Se for, a representação dele em String é:' );
-// ?
+Array.isArray(justMod2Or3) ? console.log(justMod2Or3.toString()) : console.log('Não é array');
+
+})();
