@@ -27,15 +27,15 @@ function Person(name,lastName,age){
   this.name = name;
   this.lastName = lastName;
   this.age = age;
-  this.getFullName = function(name,lastName){
+  this.getFullName = function(){
     return this.name + ' ' + this.lastName; 
   }
-  this.getAge = function(age){
+  this.getAge = function(){
     return this.age;
   }
-  this.addAge = function(x){
-    this.age += x;
-    return this.age;
+  this.addAge = function(){
+    this.age += arguments[0];
+    return this;
   }
 } 
 
@@ -77,8 +77,8 @@ cada um. A frase deverá ser no formato:
 - "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
 */
 console.log( '\nNova idade das pessoas:' );
-console.log(vitor.getFullName() + ' agora tem ' + vitor.addAge(2) + ' anos');
-console.log(reginaldo.getFullName() + ' agora tem ' + reginaldo.addAge(3) + ' anos');
-console.log(ellen.getFullName() + ' agora tem ' + ellen.addAge(4) + ' anos');
+console.log(vitor.getFullName() + ' agora tem ' + vitor.addAge(2).getAge() + ' anos');
+console.log(reginaldo.getFullName() + ' agora tem ' + reginaldo.addAge(3).getAge() + ' anos');
+console.log(ellen.getFullName() + ' agora tem ' + ellen.addAge(4).getAge() + ' anos');
 
 })();
